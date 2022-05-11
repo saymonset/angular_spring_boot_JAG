@@ -11,12 +11,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
+// Esta clase como estamos trabajando con spring y formulario, la podemos guardar de los atributos de la session de forma serializada
 @Entity
+//Los nombres de tablas en plural
 @Table(name="clientes")
+
 public class Cliente implements Serializable {
 
 	@Id
+	//estrategia de generacion : auto ,sequence,  identity..
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
@@ -25,6 +28,8 @@ public class Cliente implements Serializable {
 	private String email;
 	
 	@Column(name="create_at")
+	//DATE SOLO FECHA, TIME SOLO HORA, TIMESTAMP FECHA Y HORA
+	//TemporalType convierte el java.date de java.sql de mnera interna
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
 
@@ -68,5 +73,6 @@ public class Cliente implements Serializable {
 		this.createAt = createAt;
 	}
 
+	//Es requerido cuando se implementa el serializable
 	private static final long serialVersionUID = 1L;
 }

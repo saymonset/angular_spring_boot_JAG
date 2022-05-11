@@ -8,10 +8,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bolsadeideas.springboot.backend.apirest.models.dao.IClienteDao;
 import com.bolsadeideas.springboot.backend.apirest.models.entity.Cliente;
-
+//Con @Service esta registrado dentro del contexto y esta registrado en el contenedor
 @Service
 public class ClienteServiceImpl implements IClienteService{
 
+	//Una anotacion de spring para injectar
 	@Autowired
 	private IClienteDao clienteDao;
 	
