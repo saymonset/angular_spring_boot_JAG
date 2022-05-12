@@ -10,6 +10,8 @@ import { map } from 'rxjs/operators';
 export class ClienteService {
   private urlEndPoint: string = 'http://localhost:8080/api/clientes';
 
+
+  //creamos cabeceras
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
 
   constructor(private http: HttpClient) { }
@@ -22,6 +24,7 @@ export class ClienteService {
   }
 
   create(cliente: Cliente) : Observable<Cliente> {
+    //creamos con post, pasando cliente y cabecera y retonamos el observable
     return this.http.post<Cliente>(this.urlEndPoint, cliente, {headers: this.httpHeaders})
   }
 

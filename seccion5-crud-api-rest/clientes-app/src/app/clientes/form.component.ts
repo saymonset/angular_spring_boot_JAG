@@ -39,7 +39,9 @@ private activatedRoute: ActivatedRoute) { }
   create(): void {
     this.clienteService.create(this.cliente)
       .subscribe(cliente => {
+        //aqui navegamos a los clientes
         this.router.navigate(['/clientes'])
+        //ojo como configurar swal
         swal('Nuevo cliente', `Cliente ${cliente.nombre} creado con éxito!`, 'success')
       }
       );
