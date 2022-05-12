@@ -30,6 +30,7 @@
         <div class="col-sm-6">
           <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!cliente.id else elseBlock">Crear</button>
 
+          <!-- usamos ng-template para validar dos botones, o es editar o es crear -->
           <ng-template #elseBlock>
             <button class="btn btn-primary" role="button" (click)='update()'>Editar</button>
           </ng-template>

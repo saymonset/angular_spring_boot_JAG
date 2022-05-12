@@ -34,10 +34,13 @@ export class ClienteService {
   }
 
   update(cliente: Cliente): Observable<Cliente>{
+    // el verbo put es para actualizar, el verbo post es para crear
+    //enviamos el path con su id, el json body que es el cliente y la cabecera
     return this.http.put<Cliente>(`${this.urlEndPoint}/${cliente.id}`, cliente, {headers: this.httpHeaders})
   }
 
   delete(id: number): Observable<Cliente>{
+    //esta url es la misma que get en buscar pero se diferencia en su verbo con delete
     return this.http.delete<Cliente>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeaders})
   }
 

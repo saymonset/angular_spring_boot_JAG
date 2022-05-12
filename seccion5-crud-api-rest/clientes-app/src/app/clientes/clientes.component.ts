@@ -22,6 +22,7 @@ export class ClientesComponent implements OnInit {
   delete(cliente: Cliente): void {
     swal({
       title: 'Está seguro?',
+      //interpolacionde string para concatenar
       text: `¿Seguro que desea eliminar al cliente ${cliente.nombre} ${cliente.apellido}?`,
       type: 'warning',
       showCancelButton: true,
@@ -38,6 +39,7 @@ export class ClientesComponent implements OnInit {
 
         this.clienteService.delete(cliente.id).subscribe(
           response => {
+            //el filter devulve un nuevo arreglo y regresa todos los que cumken la condicion
             this.clientes = this.clientes.filter(cli => cli !== cliente)
             swal(
               'Cliente Eliminado!',
