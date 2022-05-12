@@ -30,6 +30,7 @@ public class ClienteServiceImpl implements IClienteService{
 	@Override
 	@Transactional(readOnly = true)
 	public Cliente findById(Long id) {
+		//optional si lo encuentra devuelve el objeto, de lo contrario, devuelve null
 		return clienteDao.findById(id).orElse(null);
 	}
 
