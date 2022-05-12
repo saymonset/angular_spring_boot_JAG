@@ -7,14 +7,12 @@
         <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
         <div class="col-sm-6">
           <input type="text" class="form-control" [(ngModel)]="cliente.nombre" name="nombre">
-        </div>  
+        </div>
       </div>
 
       <div class="form-group row">
         <label for="apellido" class="col-form-label col-sm-2">Apellido</label>
         <div class="col-sm-6">
-          <!-- ngModel Es una directiva que va a poblar con datos del formulario al objeto o atributo cliente
-          en ambas direcciones-->
           <input type="text" class="form-control" [(ngModel)]="cliente.apellido" name="apellido">
         </div>
       </div>
@@ -30,7 +28,6 @@
         <div class="col-sm-6">
           <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!cliente.id else elseBlock">Crear</button>
 
-          <!-- usamos ng-template para validar dos botones, o es editar o es crear -->
           <ng-template #elseBlock>
             <button class="btn btn-primary" role="button" (click)='update()'>Editar</button>
           </ng-template>

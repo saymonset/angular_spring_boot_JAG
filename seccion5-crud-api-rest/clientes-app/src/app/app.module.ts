@@ -10,7 +10,6 @@ import { ClienteService } from './clientes/cliente.service';
 import { RouterModule, Routes} from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormComponent } from './clientes/form.component';
-//registramos el modulo para trabajar con  formulario
 import { FormsModule } from '@angular/forms'
 
 const routes: Routes = [

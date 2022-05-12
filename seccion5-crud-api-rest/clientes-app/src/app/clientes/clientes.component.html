@@ -1,4 +1,4 @@
- <div class="card border-primary mb-3">
+<div class="card border-primary mb-3">
   <div class="card-header">Clientes</div>
   <div class="card-body text-primary">
     <h5 class="card-title">Listado de clientes</h5>
@@ -7,7 +7,7 @@
         Crear Cliente
       </button>
     </div>
-    <table class="table table-bordered table-striped"> hjj
+    <table class="table table-bordered table-striped">
       <thead>
         <tr>
           <th>id</th>
@@ -29,8 +29,6 @@
           <td>{{ cliente.email }}</td>
           <td>{{ cliente.createAt }}</td>
           <td>
-            <!-- [routerLink] lo seteamos con un arreglo que tiene dos argumentos.
-            primer argumento la ruta, el segundo argumento el id del cliente -->
             <button type="button" name="editar" [routerLink]="['/clientes/form', cliente.id]" class="btn btn-primary btn-sm">editar</button>
           </td>
           <td>

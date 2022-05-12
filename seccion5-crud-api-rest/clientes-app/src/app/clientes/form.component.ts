@@ -1,9 +1,3 @@
-
-//Para generar form dentro de clientes, se coloco ;a instrucion 
-//para no generar la carpeta 
-//omite crear la carpeta form y crea los componentes directamente en clientes
-//ng g c clientes/form --flat
-
 import { Component, OnInit } from '@angular/core';
 import {Cliente} from './cliente'
 import {ClienteService} from './cliente.service'
@@ -16,8 +10,8 @@ import swal from 'sweetalert2'
 })
 export class FormComponent implements OnInit {
 
-  public cliente: Cliente = new Cliente()
-  public titulo:string = "Crear Cliente"
+  private cliente: Cliente = new Cliente()
+  private titulo:string = "Crear Cliente"
 
   constructor(private clienteService: ClienteService,
   private router: Router,
@@ -28,8 +22,6 @@ private activatedRoute: ActivatedRoute) { }
   }
 
   cargarCliente(): void{
-    // con activatedRoute recibimos los parametros y es un observable, nos suscribimos
-    //para asignar el param id a this.id
     this.activatedRoute.params.subscribe(params => {
       let id = params['id']
       if(id){
@@ -41,10 +33,7 @@ private activatedRoute: ActivatedRoute) { }
   create(): void {
     this.clienteService.create(this.cliente)
       .subscribe(cliente => {
-        //aqui navegamos a los clientes
         this.router.navigate(['/clientes'])
-        //ojo como configurar swal
-        //usamos interpolacion de string
         swal('Nuevo cliente', `Cliente ${cliente.nombre} creado con éxito!`, 'success')
       }
       );
