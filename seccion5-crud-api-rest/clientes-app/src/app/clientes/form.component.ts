@@ -28,6 +28,8 @@ private activatedRoute: ActivatedRoute) { }
   }
 
   cargarCliente(): void{
+    // con activatedRoute recibimos los parametros y es un observable, nos suscribimos
+    //para asignar el param id a this.id
     this.activatedRoute.params.subscribe(params => {
       let id = params['id']
       if(id){
@@ -42,6 +44,7 @@ private activatedRoute: ActivatedRoute) { }
         //aqui navegamos a los clientes
         this.router.navigate(['/clientes'])
         //ojo como configurar swal
+        //usamos interpolacion de string
         swal('Nuevo cliente', `Cliente ${cliente.nombre} creado con éxito!`, 'success')
       }
       );

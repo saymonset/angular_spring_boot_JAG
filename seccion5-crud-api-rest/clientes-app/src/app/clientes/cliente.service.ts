@@ -29,6 +29,7 @@ export class ClienteService {
   }
 
   getCliente(id): Observable<Cliente>{
+    //con interpolacion de string se concatena el id
     return this.http.get<Cliente>(`${this.urlEndPoint}/${id}`)
   }
 

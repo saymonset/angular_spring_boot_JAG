@@ -29,6 +29,8 @@
           <td>{{ cliente.email }}</td>
           <td>{{ cliente.createAt }}</td>
           <td>
+            <!-- [routerLink] lo seteamos con un arreglo que tiene dos argumentos.
+            primer argumento la ruta, el segundo argumento el id del cliente -->
             <button type="button" name="editar" [routerLink]="['/clientes/form', cliente.id]" class="btn btn-primary btn-sm">editar</button>
           </td>
           <td>
