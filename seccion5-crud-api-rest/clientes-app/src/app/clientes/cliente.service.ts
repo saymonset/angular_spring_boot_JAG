@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Cliente } from './cliente';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
-//Toods estos conevierten a observable
 import { Observable, throwError } from 'rxjs';
 import swal from 'sweetalert2';
 
@@ -47,26 +46,16 @@ export class ClienteService {
   }
 
   create(cliente: Cliente): Observable<Cliente> {
-    /* Si vas a usar operadores, estos deben estar dentro del metodo pipe */
-    //en post quitamos el tipo de dato para que no lo convierta (this.http.post()
     return this.http.post(this.urlEndPoint, cliente, { headers: this.httpHeaders }).pipe(
-      //usamos el map para transformar la respuesta
-      //transformamos la respuesta json y su atributo cliente en objeto cliente 
-      //y es lo que devuelve
-            map((response: any) => response.cliente as Cliente),
-      /* Este operador catchError se encarga de interceptar el observable,
-       el flujo en busca de fallas */
+      map((response: any) => response.cliente as Cliente),
       catchError(e => {
 
-        // si es un bad request que viene de la validacion
         if (e.status == 400) {
           return throwError(e);
         }
 
-        //Aqui tomamos el error de e.error.mensaje queviene del backend
         console.error(e.error.mensaje);
         swal(e.error.mensaje, e.error.error, 'error');
-        //retornamos un observable
         return throwError(e);
       })
     );
@@ -74,15 +63,10 @@ export class ClienteService {
 
   getCliente(id): Observable<Cliente> {
     return this.http.get<Cliente>(`${this.urlEndPoint}/${id}`).pipe(
-       /* Este operador catchError se encarga de interceptar el observable,
-       el flujo en busca de fallas */
-     
       catchError(e => {
-        //Regresamos al listado cliente y lo redirigimos con Router que es inyectado en el constructor
         this.router.navigate(['/clientes']);
         console.error(e.error.mensaje);
         swal('Error al editar', e.error.mensaje, 'error');
-        /* Con throwError(e) lo convertimos en un observable que es lo que espera en la salida */
         return throwError(e);
       })
     );
@@ -97,7 +81,6 @@ export class ClienteService {
         }
 
         console.error(e.error.mensaje);
-        //atributos que vienen del backend (mensaje y error)
         swal(e.error.mensaje, e.error.error, 'error');
         return throwError(e);
       })
