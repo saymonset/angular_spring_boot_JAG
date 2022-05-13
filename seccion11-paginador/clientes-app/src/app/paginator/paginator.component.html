@@ -1,15 +1,20 @@
 <!-- esta class="pagination" es propia de boostrap y da estilo de paginador al ul -->
 <ul *ngIf="paginas?.length >0" class="pagination">
 
+  <!-- paginador.number es el numero de pagina actual que nos indica el backend y validamos
+qpaginador.number > 0, si cumple la condicion, podemos retroceder -->
   <li class="page-item" *ngIf="paginador.number > 0">
     <a class="page-link" [routerLink]="['/clientes/page', paginador.number-1]">&laquo;</a>
   </li>
 
+  <!-- paginador.first es el flat que viene del backend y nos indica si es el primer elemento-->
   <li [ngClass]="paginador.first? 'disabled page-item': 'page-item'">
     <!-- en angular con corchetes y router link  y sus valores en corchetes para pasar los valores -->
+    <!-- la primera pagina siempre es cero -->
     <a class="page-link" [routerLink]="['/clientes/page', 0]">Primera</a>
   </li>
 
+  <!-- paginador.number es el numero de pagina actual que nos indica el backend -->
   <li *ngFor="let pagina of paginas" [ngClass]="pagina-1 == paginador.number? 'page-item active':'page-item'">
     <!-- La paginacion -1 porque en el componente le sumamos 1 y en el backend viene en 0 -->
     <span class="page-link" *ngIf="pagina-1 == paginador.number">{{pagina}}</span>
@@ -17,10 +22,12 @@
     <a *ngIf="pagina-1 != paginador.number" class="page-link" [routerLink]="['/clientes/page', pagina-1]">{{pagina}}</a>
   </li>
 
+  <!-- paginador.last es el flat que viene del backend y nos indica si es ultima pagna-->
   <li [ngClass]="paginador.last?' disabled page-item': 'page-item'">
     <a class="page-link" [routerLink]="['/clientes/page', paginador.totalPages-1]">Última</a>
   </li>
-
+<!-- paginador.number es el numero de pagina actual que nos indica el backend y validamos
+que sea menor al total de paginas - 1 para ofrecer siguiente si cumple la condicion -->
   <li class="page-item" *ngIf="paginador.number < paginador.totalPages-1">
     <a class="page-link" [routerLink]="['/clientes/page', paginador.number+1]">&raquo;</a>
   </li>
