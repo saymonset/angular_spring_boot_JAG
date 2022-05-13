@@ -58,6 +58,7 @@ export class ClienteService {
        el flujo en busca de fallas */
       catchError(e => {
 
+        // si es un bad request que viene de la validacion
         if (e.status == 400) {
           return throwError(e);
         }
