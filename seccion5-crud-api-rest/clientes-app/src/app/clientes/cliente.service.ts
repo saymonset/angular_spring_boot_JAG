@@ -32,6 +32,7 @@ export class ClienteService {
           cliente.nombre = cliente.nombre.toUpperCase();
           //let datePipe = new DatePipe('es');
           //Formateamos la fecha con el objeto datePipe de angular
+          //EEEE dia de la semana, dd es numero de dia, MMMM nombre del mes y despues el yyyy es el anio en numero
           //cliente.createAt = datePipe.transform(cliente.createAt, 'EEEE dd, MMMM yyyy');
           //Formateamos la fecha con el objeto formaDate de angular
           //cliente.createAt = formatDate(cliente.createAt, 'dd-MM-yyyy', 'es');

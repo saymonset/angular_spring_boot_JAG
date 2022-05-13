@@ -13,6 +13,7 @@ import { FormComponent } from './clientes/form.component';
 import { FormsModule } from '@angular/forms';
 
 import { registerLocaleData } from '@angular/common';
+// configuramos el locale en espanol para las fechas , monedas. Es la internacionalizacion
 import localeES from '@angular/common/locales/es';
 registerLocaleData(localeES, 'es');
 
