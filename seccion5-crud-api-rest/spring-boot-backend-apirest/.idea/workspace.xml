@@ -337,7 +337,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../seccion11-paginador/spring-boot-backend-apirest" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -761,12 +761,12 @@
       <option name="presentableId" value="Default" />
       <updated>1652347561192</updated>
       <workItem from="1652347565722" duration="2150000" />
-      <workItem from="1652433561280" duration="8871000" />
+      <workItem from="1652433561280" duration="9475000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11021000" />
+    <option name="totallyTimeSpent" value="11625000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="114" y="0" width="1568" height="1052" extended-state="6" />

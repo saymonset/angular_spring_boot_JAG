@@ -42,6 +42,8 @@ public class ClienteRestController {
 	
 	@GetMapping("/clientes/page/{page}")
 	public Page<Cliente> index(@PathVariable Integer page) {
+		//Aqui implemenamos el PageRequest para paginar
+		//La pagina, su numero viene de angular en el parametro
 		Pageable pageable = PageRequest.of(page, 4);
 		return clienteService.findAll(pageable);
 	}
