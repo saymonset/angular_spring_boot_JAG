@@ -40,17 +40,22 @@ public class Cliente implements Serializable {
 	//Validamos con sjr-380
 	//@NotEmpty: usamos la import javax.validation.constraints si estamos con la version 2.0 o superior de spring-boot
 	//@NotEmpty: usamos la import org.hibernate.validator.constraints si estamos con la version 1.5.x o inferior de spring-boot
+	//aqui cambianos el mensaje para espanol
 	@NotEmpty(message ="no puede estar vacio")
 	//@Size: usamos la import javax.validation.constraints si estamos con la version 2.0 o superior de spring-boot
+	//aqui cambianos el mensaje para espanol
 	@Size(min=4, max=12, message="el tamaño tiene que estar entre 4 y 12")
 	@Column(nullable=false)
 	private String nombre;
-	
+
+	//aqui cambianos el mensaje para espanol
 	@NotEmpty(message ="no puede estar vacio")
 	private String apellido;
-	
+
+	//aqui cambianos el mensaje para espanol
 	@NotEmpty(message ="no puede estar vacio")
 	//@Email: usamos la import javax.validation.constraints si estamos con la version 2.0 o superior de spring-boot
+	//aqui cambianos el mensaje para espanol
 	@Email(message="no es una dirección de correo bien formada")
 	@Column(nullable=false, unique=true)
 	private String email;

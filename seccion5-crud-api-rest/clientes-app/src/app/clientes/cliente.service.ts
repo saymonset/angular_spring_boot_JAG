@@ -50,10 +50,14 @@ export class ClienteService {
       map((response: any) => response.cliente as Cliente),
       catchError(e => {
 
+        //si el estatus del error es 400, entonces disparamos un return con  throwError(e)
+        //y en el subscribe, manejamos el aributo errors que vienen del backend
+        //este error lo manejamos de forma distinta que los otros tipos de errores, por eso retornamos el
+        //error que viene del backedn
         if (e.status == 400) {
           return throwError(e);
         }
-
+       //Si no hay mensaje de error de backen, manejamo el error de otro tipo mas sencillo
         console.error(e.error.mensaje);
         swal(e.error.mensaje, e.error.error, 'error');
         return throwError(e);
@@ -76,6 +80,10 @@ export class ClienteService {
     return this.http.put<any>(`${this.urlEndPoint}/${cliente.id}`, cliente, { headers: this.httpHeaders }).pipe(
       catchError(e => {
 
+        //si el estatus del error es 400, entonces disparamos un return con  throwError(e)
+        //y en el subscribe, manejamos el aributo errors que vienen del backend
+        //este error lo manejamos de forma distinta que los otros tipos de errores, por eso retornamos el
+        //error que viene del backedn
         if (e.status == 400) {
           return throwError(e);
         }
