@@ -6,11 +6,14 @@
   </li>
 
   <li [ngClass]="paginador.first? 'disabled page-item': 'page-item'">
+    <!-- en angular con corchetes y router link  y sus valores en corchetes para pasar los valores -->
     <a class="page-link" [routerLink]="['/clientes/page', 0]">Primera</a>
   </li>
 
   <li *ngFor="let pagina of paginas" [ngClass]="pagina-1 == paginador.number? 'page-item active':'page-item'">
+    <!-- La paginacion -1 porque en el componente le sumamos 1 y en el backend viene en 0 -->
     <span class="page-link" *ngIf="pagina-1 == paginador.number">{{pagina}}</span>
+    <!-- si es distinto la pagina que estamos navegando al numero de pagina que viene el backend, colocamos el link -->
     <a *ngIf="pagina-1 != paginador.number" class="page-link" [routerLink]="['/clientes/page', pagina-1]">{{pagina}}</a>
   </li>
 
