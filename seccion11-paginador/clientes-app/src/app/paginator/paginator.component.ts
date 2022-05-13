@@ -27,13 +27,17 @@ export class PaginatorComponent implements OnInit, OnChanges {
   componente y no lo vuelve a recrear. Mantiene la misma instancia y solo cambia el parametro page
   que esta en un observable */
   ngOnInit() {
+    //calculaos el rango en la primera pagina solamente
     this.initPaginator();
   }
 
   /* usamos este evento del ciclo de vida de angular, para que cambie el paginador y su numero en el arreglo*/
   ngOnChanges(changes: SimpleChanges) {
+    //este es el paginador de input. Si hay cambios en el arreglo de changes ubicando paginador
     let paginadorActualizado = changes['paginador'];
 
+    //Si hay una version anterior con previousValue
+    //invocamos initPaginator
     if (paginadorActualizado.previousValue) {
       this.initPaginator();
     }
