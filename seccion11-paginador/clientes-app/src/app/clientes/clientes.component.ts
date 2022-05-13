@@ -19,9 +19,13 @@ export class ClientesComponent implements OnInit {
 
   ngOnInit() {
 
+    //activatedRoute su paramMap que es un observable, nos subscribimos para monitorear el parametro page
+    //y actaulizamos la pagina
     this.activatedRoute.paramMap.subscribe(params => {
+      //Este operador de suma (+) va a convertir este parametro en number (+params.get('page');)
       let page: number = +params.get('page');
 
+      //Si no esta difinido, lo coocamos en cero
       if (!page) {
         page = 0;
       }
