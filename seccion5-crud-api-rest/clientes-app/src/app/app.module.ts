@@ -40,6 +40,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
+  //Configuramos el LOCALE_ID para las fechs en los pipes de angular para que trabaje en espanol
   providers: [ClienteService, { provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]
 })
