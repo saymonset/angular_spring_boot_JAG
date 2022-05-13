@@ -23,7 +23,8 @@ public class Cliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
+
+	//Validamos
 	@NotEmpty(message ="no puede estar vacio")
 	@Size(min=4, max=12, message="el tamaño tiene que estar entre 4 y 12")
 	@Column(nullable=false)

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Cliente } from './cliente';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
+//Toods estos conevierten a observable
 import { Observable, throwError } from 'rxjs';
 import swal from 'sweetalert2';
 
@@ -46,8 +47,11 @@ export class ClienteService {
   }
 
   create(cliente: Cliente): Observable<Cliente> {
+    /* Si vas a usar operadores, estos deben estar dentro del metodo pipe */
     return this.http.post(this.urlEndPoint, cliente, { headers: this.httpHeaders }).pipe(
       map((response: any) => response.cliente as Cliente),
+      /* Este operador catchError se encarga de interceptar el observable,
+       el flujo en busca de fallas */
       catchError(e => {
 
         if (e.status == 400) {
@@ -63,10 +67,15 @@ export class ClienteService {
 
   getCliente(id): Observable<Cliente> {
     return this.http.get<Cliente>(`${this.urlEndPoint}/${id}`).pipe(
+       /* Este operador catchError se encarga de interceptar el observable,
+       el flujo en busca de fallas */
+     
       catchError(e => {
+        //Regresamos al listado cliente y lo redirigimos con Router que es inyectado en el constructor
         this.router.navigate(['/clientes']);
         console.error(e.error.mensaje);
         swal('Error al editar', e.error.mensaje, 'error');
+        /* Con throwError(e) lo convertimos en un observable que es lo que espera en la salida */
         return throwError(e);
       })
     );
