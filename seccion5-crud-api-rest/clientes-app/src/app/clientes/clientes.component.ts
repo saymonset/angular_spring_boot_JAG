@@ -16,8 +16,14 @@ export class ClientesComponent implements OnInit {
 
   ngOnInit() {
     this.clienteService.getClientes().pipe(
+      //aqui usamos el tap en el clientes.component para ver que trajo en el flujo sin alterralo
+      //ya viene del tipo cliente por el map que se hizo anteriormente en el servicio
+      //el tap nunca retorna nada. es un void
+      //Si quitamos el suscribe, entonces nada se va a ejecutar
       tap(clientes => {
         console.log('ClientesComponent: tap 3');
+        //se puede asignar el valor y lo quitamos del suscribe
+        //this.clientes = clientes
         clientes.forEach(cliente => {
           console.log(cliente.nombre);
         });

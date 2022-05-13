@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 //import { DatePipe, formatDate } from '@angular/common';
 import { Cliente } from './cliente';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+//tap: es tomar los valores y realizar alguna tarea, algun proceso, pero sin modificar , sin
+//tocar los valores en si mismos. Tipicamente por ejemplo, guardar algo o registrar estos datos
 import { map, catchError, tap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import swal from 'sweetalert2';
@@ -17,8 +19,12 @@ export class ClienteService {
   constructor(private http: HttpClient, private router: Router) { }
 
   getClientes(): Observable<Cliente[]> {
+    //dentro de pipe o tuberia podemos usqar todos los operadores que necesitemos
     return this.http.get(this.urlEndPoint).pipe(
       tap(response => {
+        //el response, cambiamos el tipo que se hizo en el map para hacer un forEach
+        //aqui en el tap, no toca los valores.. Solo va mostrando los datos
+        //tap: No cambia ni modifica el tio de dato
         let clientes = response as Cliente[];
         console.log('ClienteService: tap 1');
         clientes.forEach(cliente => {
@@ -43,6 +49,7 @@ export class ClienteService {
       }
       ),
       tap(response => {
+        // aqui el response ya es de tipo cliente porque fue modificado por el map
         console.log('ClienteService: tap 2');
         response.forEach(cliente => {
           console.log(cliente.nombre);
