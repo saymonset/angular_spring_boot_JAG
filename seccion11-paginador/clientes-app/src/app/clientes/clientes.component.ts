@@ -38,6 +38,8 @@ export class ClientesComponent implements OnInit {
           })
         ).subscribe(response => {
           this.clientes = response.content as Cliente[];
+          //aqui al paginador, le asignamos la response que viene del backend
+          //Response del backend, trae tods los atributos
           this.paginador = response;
         });
     });

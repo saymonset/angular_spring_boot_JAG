@@ -38,6 +38,10 @@
         </tr>
       </tbody>
     </table>
+    <!-- Este es el input  [paginador] de paginator.component y le asignamos la variable paginador
+       que es el response .
+      Esto es una foma de injeccion de dependenca del objeto padre al objeto hijo
+      -->
     <paginator-nav *ngIf="paginador" [paginador]="paginador"></paginator-nav>
   </div>
 </div>
