@@ -27,11 +27,16 @@ export class ClienteService {
       }),
       map(response => {
         let clientes = response as Cliente[];
+        //Aqui usamos el map de javascript para alterar el nombre e cada uno de los objetos
         return clientes.map(cliente => {
           cliente.nombre = cliente.nombre.toUpperCase();
           //let datePipe = new DatePipe('es');
+          //Formateamos la fecha con el objeto datePipe de angular
           //cliente.createAt = datePipe.transform(cliente.createAt, 'EEEE dd, MMMM yyyy');
+          //Formateamos la fecha con el objeto formaDate de angular
           //cliente.createAt = formatDate(cliente.createAt, 'dd-MM-yyyy', 'es');
+          //retornamo el cliente del arrelo map de java script para crear internamente 
+          //la lsita de clientes que esta retornando
           return cliente;
         });
       }
