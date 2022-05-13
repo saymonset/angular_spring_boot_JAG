@@ -23,6 +23,7 @@ export class ClienteService {
         (response.content as Cliente[]).forEach(cliente => console.log(cliente.nombre));
       }),
       map((response: any) => {
+        //transforrmamos a any para tomar del content y convertirlo a Cliente[]
         (response.content as Cliente[]).map(cliente => {
           cliente.nombre = cliente.nombre.toUpperCase();
           //let datePipe = new DatePipe('es');
@@ -34,6 +35,7 @@ export class ClienteService {
       }),
       tap(response => {
         console.log('ClienteService: tap 2');
+         //transforrmamos para tomar del content y convertirlo a Cliente[]
         (response.content as Cliente[]).forEach(cliente => console.log(cliente.nombre));
       })
     );
