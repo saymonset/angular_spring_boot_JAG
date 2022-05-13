@@ -39,6 +39,7 @@ export class FormComponent implements OnInit {
           this.router.navigate(['/clientes']);
           swal('Nuevo cliente', `El cliente ${cliente.nombre} ha sido creado con éxito`, 'success');
         },
+        //si viene un error dentro del atribute de subscribe y estos errores vienne del backend
         err => {
           this.errores = err.error.errors as string[];
           console.error('Código del error desde el backend: ' + err.status);
