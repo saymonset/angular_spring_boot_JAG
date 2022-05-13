@@ -16,6 +16,19 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+
+
+/*
+API JAVA BEAN VALIDATION: ESPECIFICACION JSR-380
+Para validar es muy importante agregar la siguiente dependencia en el pom.xml del proyecto Spring Boot
+
+		<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		Muy importante, es una actualización desde la versión de Spring Boot 2.3.0 o superior agregar esta dependencia de spring-boot-starter-validation.*/
+
+
 @Entity
 @Table(name="clientes")
 public class Cliente implements Serializable {
@@ -24,8 +37,11 @@ public class Cliente implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
-	//Validamos
+	//Validamos con sjr-380
+	//@NotEmpty: usamos la import javax.validation.constraints si estamos con la version 2.0 o superior de spring-boot
+	//@NotEmpty: usamos la import org.hibernate.validator.constraints si estamos con la version 1.5.x o inferior de spring-boot
 	@NotEmpty(message ="no puede estar vacio")
+	//@Size: usamos la import javax.validation.constraints si estamos con la version 2.0 o superior de spring-boot
 	@Size(min=4, max=12, message="el tamaño tiene que estar entre 4 y 12")
 	@Column(nullable=false)
 	private String nombre;
@@ -34,6 +50,7 @@ public class Cliente implements Serializable {
 	private String apellido;
 	
 	@NotEmpty(message ="no puede estar vacio")
+	//@Email: usamos la import javax.validation.constraints si estamos con la version 2.0 o superior de spring-boot
 	@Email(message="no es una dirección de correo bien formada")
 	@Column(nullable=false, unique=true)
 	private String email;
