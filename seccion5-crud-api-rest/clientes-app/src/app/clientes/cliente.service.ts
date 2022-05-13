@@ -48,8 +48,12 @@ export class ClienteService {
 
   create(cliente: Cliente): Observable<Cliente> {
     /* Si vas a usar operadores, estos deben estar dentro del metodo pipe */
+    //en post quitamos el tipo de dato para que no lo convierta (this.http.post()
     return this.http.post(this.urlEndPoint, cliente, { headers: this.httpHeaders }).pipe(
-      map((response: any) => response.cliente as Cliente),
+      //usamos el map para transformar la respuesta
+      //transformamos la respuesta json y su atributo cliente en objeto cliente 
+      //y es lo que devuelve
+            map((response: any) => response.cliente as Cliente),
       /* Este operador catchError se encarga de interceptar el observable,
        el flujo en busca de fallas */
       catchError(e => {
@@ -58,8 +62,10 @@ export class ClienteService {
           return throwError(e);
         }
 
+        //Aqui tomamos el error de e.error.mensaje queviene del backend
         console.error(e.error.mensaje);
         swal(e.error.mensaje, e.error.error, 'error');
+        //retornamos un observable
         return throwError(e);
       })
     );
@@ -90,6 +96,7 @@ export class ClienteService {
         }
 
         console.error(e.error.mensaje);
+        //atributos que vienen del backend (mensaje y error)
         swal(e.error.mensaje, e.error.error, 'error');
         return throwError(e);
       })
