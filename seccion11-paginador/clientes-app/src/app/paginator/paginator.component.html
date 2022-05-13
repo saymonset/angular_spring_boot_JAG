@@ -1,5 +1,8 @@
 <!-- esta class="pagination" es propia de boostrap y da estilo de paginador al ul -->
-<ul *ngIf="paginas?.length >0" class="pagination">
+
+<!-- Si colocamos style="overflow: scroll;" entonces el paginador asi tenga muchas paginas no se va a salir 
+del recuadro  -->
+<ul *ngIf="paginas?.length >0" class="pagination" style="overflow: scroll;">
 
   <!-- paginador.number es el numero de pagina actual que nos indica el backend y validamos
 qpaginador.number > 0, si cumple la condicion, podemos retroceder -->
