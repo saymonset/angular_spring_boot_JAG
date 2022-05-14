@@ -14,6 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -31,20 +32,25 @@ public class Cliente implements Serializable {
 	
 	@NotEmpty(message ="no puede estar vacio")
 	private String apellido;
-	
+
+	//Si es objeto es con @NotNull, si es string es con @NotEmpty
 	@NotEmpty(message ="no puede estar vacio")
 	@Email(message="no es una dirección de correo bien formada")
 	@Column(nullable=false, unique=false)
 	private String email;
-	
+
+	//Si es objeto es con @NotNull, si es string es con @NotEmpty
+	@NotNull(message = "no puede estar vacio")
 	@Column(name="create_at")
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
 
-	@PrePersist
+	///Ciclo de vida del entity
+	//antes que se persista o se actualize en bd, se le coloca esta fecha a createAt
+	/*@PrePersist
 	public void prePersist() {
 		createAt = new Date();
-	}
+	}*/
 	
 	public Long getId() {
 		return id;
