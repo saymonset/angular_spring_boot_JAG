@@ -14,8 +14,14 @@ import { FormsModule } from '@angular/forms';
 
 import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(localeES, 'es');
+
+
+/* Para instalar angular material */
+/* siempre sobre la raiz del proyecto */
+/* ng add @angular/material */
 
 const routes: Routes = [
   { path: '', redirectTo: '/clientes', pathMatch: 'full' },
@@ -41,7 +47,8 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule
   ],
   providers: [ClienteService, { provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]

@@ -52,6 +52,18 @@
       </div>
 
       <div class="form-group row">
+        <label for="createAt" class="col-form-label col-sm-2">Fecha</label>
+        <div class="col-sm-6">
+          <input [matDatepicker]="miDatepicker" class="form-control" [(ngModel)]="cliente.createAt" 
+          name="createAt" style="display:inline; width:300px;">
+          <mat-datepicker-toggle [for]="miDatepicker"></mat-datepicker-toggle>
+       <!--    Estamos creando una variable de contexto de la vista #miDatepicker y cada vez
+          que e hace click, se enlaza al input  -->
+          <mat-datepicker #miDatepicker></mat-datepicker>
+        </div>
+      </div>
+
+      <div class="form-group row">
         <label for="createAt" class="col-form-label col-sm-2">createAt</label>
         <div class="col-sm-6">
           <input type="date" class="form-control" [(ngModel)]="cliente.createAt" name="createAt" > 
