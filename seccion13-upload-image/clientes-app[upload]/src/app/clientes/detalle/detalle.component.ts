@@ -21,6 +21,7 @@ export class DetalleComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params => {
+      //con signo + podemos convertireste string en number
       let id: number = +params.get('id');
       if (id) {
         this.clienteService.getCliente(id).subscribe(cliente => {

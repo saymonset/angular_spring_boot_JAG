@@ -94,7 +94,10 @@ export class ClienteService {
 
   subirFoto(archivo: File, id): Observable<HttpEvent<{}>> {
 
+    //Es obligtorio usar FormData de java script qu es nativa, que nos da soporte 
+    //a multipart/form-data para subir archivos
     let formData = new FormData();
+    //enviamos estos dos campos al formulario
     formData.append("archivo", archivo);
     formData.append("id", id);
 

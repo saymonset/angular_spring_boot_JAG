@@ -2,6 +2,7 @@
   <div class="card-header">{{ titulo }}</div>
   <div class="card-body">
 
+    <!-- container de boostrap -->
     <div class="container">
       <div class="row">
 
@@ -32,6 +33,8 @@
         </div>
 
         <div class="col-sm">
+          <!-- Aqui mostramos la imagen del cliente -->
+          <!-- //con esta forma "attachment; filename=\"" lo podemos incluir en el elemento html de la imagen (IMG), en src -->
           <img *ngIf="cliente?.foto" src="http://localhost:8080/api/uploads/img/{{cliente.foto}}" alt="{{cliente.foto}}" class="img-thumbnail rounded">
         </div>
       </div>
