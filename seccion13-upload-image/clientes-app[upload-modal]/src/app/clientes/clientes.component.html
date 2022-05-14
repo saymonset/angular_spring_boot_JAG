@@ -30,6 +30,7 @@
             src="http://localhost:8080/api/uploads/img/{{cliente.foto}}" alt="{{cliente.foto}}" class="img-thumbnail rounded"
             style="width:64px; cursor: pointer;">
 
+            <!-- aqui la ruta en spring relativa a images del resurce -->
             <img (click)="abrirModal(cliente)" *ngIf="!cliente?.foto"
               src="http://localhost:8080/images/no-usuario.png" alt="Sin foto" class="img-thumbnail rounded"
               style="width:64px; cursor: pointer;">
