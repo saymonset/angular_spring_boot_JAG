@@ -205,7 +205,7 @@ public class ClienteRestController {
 			}
 			
 			String nombreFotoAnterior = cliente.getFoto();
-			
+			//si hay una foto vieja del cliente, se elimina y se deja la ultima que subio
 			uploadService.eliminar(nombreFotoAnterior);
 						
 			cliente.setFoto(nombreArchivo);
