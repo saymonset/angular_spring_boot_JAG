@@ -37,6 +37,7 @@ public class UploadFileServiceImpl implements IUploadFileService{
 			
 			recurso = new UrlResource(rutaArchivo.toUri());
 
+			//registramos los logs
 			log.error("Error no se pudo cargar la imagen: " + nombreFoto);
 			
 		}
