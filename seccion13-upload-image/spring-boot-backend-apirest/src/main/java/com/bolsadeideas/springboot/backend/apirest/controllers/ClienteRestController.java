@@ -219,10 +219,12 @@ public class ClienteRestController {
 		
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
-	
+	/*Metodo handler del navegador que se encargue de mostrar esta foto al usuario*/
+	/*:.+ es un parametro regular que ndica que va a incluir un punto y la extension */
 	@GetMapping("/uploads/img/{nombreFoto:.+}")
 	public ResponseEntity<Resource> verFoto(@PathVariable String nombreFoto){
 
+		//al convertir la foto a un recurso, este se puede mostrar en el navegador
 		Resource recurso = null;
 		
 		try {
@@ -230,8 +232,11 @@ public class ClienteRestController {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		
+
+		//pasamos las cabeceras de la respuesta HttpHeaders para que esta imagen, este recurso lo forcemos
+		//para que se pueda descargar como un attachment
 		HttpHeaders cabecera = new HttpHeaders();
+		//con esta forma "attachment; filename=\"" lo podemos incluir en el elemento html de la imagen (IMG), en src
 		cabecera.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + recurso.getFilename() + "\"");
 		
 		return new ResponseEntity<Resource>(recurso, cabecera, HttpStatus.OK);
