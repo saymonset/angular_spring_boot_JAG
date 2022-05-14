@@ -101,6 +101,7 @@ export class ClienteService {
     formData.append("archivo", archivo);
     formData.append("id", id);
 
+    //Esto es para mostrar el progreso de carga
     const req = new HttpRequest('POST', `${this.urlEndPoint}/upload`, formData, {
       reportProgress: true
     });

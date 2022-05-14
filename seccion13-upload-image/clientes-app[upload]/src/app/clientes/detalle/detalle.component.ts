@@ -33,6 +33,7 @@ export class DetalleComponent implements OnInit {
 
   seleccionarFoto(event) {
     this.fotoSeleccionada = event.target.files[0];
+    // inicializamos progreso en la barra
     this.progreso = 0;
     console.log(this.fotoSeleccionada);
     /* aqui validamos que sea una this.fotoSeleccionada. Descartamos .doc .. etc.. */
@@ -50,8 +51,13 @@ export class DetalleComponent implements OnInit {
       this.clienteService.subirFoto(this.fotoSeleccionada, this.cliente.id)
         .subscribe(event => {
           if (event.type === HttpEventType.UploadProgress) {
+            //aqui calculamos el porcentaje del progreso
+            //event.loaded es lo enviado hasta el momento
+            //Este es el total a mandar
+            //El resultado de la division  lo multiplicamos por 100
             this.progreso = Math.round((event.loaded / event.total) * 100);
           } else if (event.type === HttpEventType.Response) {
+            //Cuando finaliza la carga, lo convertimos al cliente
             let response: any = event.body;
             this.cliente = response.cliente as Cliente;
             swal('La foto se ha subido completamente!', response.mensaje, 'success');
