@@ -34,7 +34,7 @@ public class UploadFileServiceImpl implements IUploadFileService{
 			rutaArchivo = Paths.get("src/main/resources/static/images").resolve("no-usuario.png").toAbsolutePath();
 			
 			recurso = new UrlResource(rutaArchivo.toUri());
-			
+
 			log.error("Error no se pudo cargar la imagen: " + nombreFoto);
 			
 		}
@@ -43,7 +43,9 @@ public class UploadFileServiceImpl implements IUploadFileService{
 
 	@Override
 	public String copiar(MultipartFile archivo) throws IOException {
-		
+
+		//concatenamos un nombre a;eatorio que sea unico para ese usuario asi sea el mismo nmbre del file que sube con UUID.randomUUID()
+		//si e archivo tiene espacios en blanco, se reemplazan con nada
 		String nombreArchivo = UUID.randomUUID().toString() + "_" +  archivo.getOriginalFilename().replace(" ", "");
 		
 		Path rutaArchivo = getPath(nombreArchivo);
