@@ -41,7 +41,10 @@ export class ClientesComponent implements OnInit {
         });
     });
 
+    //aqui nos subscribimos al get notificarUpload y cada ves que se emita un evento del
+    //observble con emit, aqui lo resivimos..
     this.modalService.notificarUpload.subscribe(cliente => {
+      //aqui actualizamos el cliente en la lista de clientes
       this.clientes = this.clientes.map(clienteOriginal => {
         if (cliente.id == clienteOriginal.id) {
           clienteOriginal.foto = cliente.foto;

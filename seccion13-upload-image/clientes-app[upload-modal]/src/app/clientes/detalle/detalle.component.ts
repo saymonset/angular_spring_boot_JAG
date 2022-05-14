@@ -47,6 +47,10 @@ export class DetalleComponent implements OnInit {
             let response: any = event.body;
             this.cliente = response.cliente as Cliente;
 
+            //aqio los parentesis de notificarUpload no van. Se van  a
+            //tratar como un atributo.
+            //Emitimos el observable con emit para que los que esten susbcritos los tengan
+            //aqui emitimos la foto nueva que se encuentra en el objeto nuevo cliente
             this.modalService.notificarUpload.emit(this.cliente);
             swal('La foto se ha subido completamente!', response.mensaje, 'success');
           }

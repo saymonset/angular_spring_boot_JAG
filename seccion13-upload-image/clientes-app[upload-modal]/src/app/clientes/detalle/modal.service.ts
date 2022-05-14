@@ -7,10 +7,12 @@ export class ModalService {
 
   modal: boolean = false;
 
+  //Observable para mnitorear cuando hags un upload
   private _notificarUpload = new EventEmitter<any>();
 
   constructor() { }
 
+  //aplicamos el metodo get
   get notificarUpload(): EventEmitter<any> {
     return this._notificarUpload;
   }
