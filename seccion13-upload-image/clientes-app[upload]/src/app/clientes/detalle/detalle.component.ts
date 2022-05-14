@@ -35,6 +35,7 @@ export class DetalleComponent implements OnInit {
     this.fotoSeleccionada = event.target.files[0];
     this.progreso = 0;
     console.log(this.fotoSeleccionada);
+    /* aqui validamos que sea una this.fotoSeleccionada. Descartamos .doc .. etc.. */
     if (this.fotoSeleccionada.type.indexOf('image') < 0) {
       swal('Error seleccionar imagen: ', 'El archivo debe ser del tipo imagen', 'error');
       this.fotoSeleccionada = null;
