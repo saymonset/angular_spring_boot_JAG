@@ -48,7 +48,8 @@ public class UploadFileServiceImpl implements IUploadFileService{
 		
 		Path rutaArchivo = getPath(nombreArchivo);
 		log.info(rutaArchivo.toString());
-		
+
+		/*aqui ya subimos l archivo a la ruta escojida*/
 		Files.copy(archivo.getInputStream(), rutaArchivo);
 		
 		return nombreArchivo;
@@ -71,6 +72,10 @@ public class UploadFileServiceImpl implements IUploadFileService{
 
 	@Override
 	public Path getPath(String nombreFoto) {
+		//este directorio esta ajeno a nuestro proyecto, pero aca lo colocaron dentro y se busca
+		//internnamente a traves de sta sintaxi
+		//Como esta dentro de nuestro proecto, se define como una ruta relativa a nuestro proyecto "uploads"
+		//Si es ruta externa, e debe colocar la ruta absoluta ejemplo: c:\\ruta_absoluta
 		return Paths.get(DIRECTORIO_UPLOAD).resolve(nombreFoto).toAbsolutePath();
 	}
 

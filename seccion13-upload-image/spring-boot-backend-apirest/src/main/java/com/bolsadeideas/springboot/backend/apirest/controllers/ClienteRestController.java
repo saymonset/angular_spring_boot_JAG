@@ -179,10 +179,14 @@ public class ClienteRestController {
 		}
 		
 		response.put("mensaje", "El cliente eliminado con éxito!");
-		
+
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
-	
+
+/*	para poder subir archivos, debe ser a traves de formData, de datos de formularios que
+	soporte MultipartFile*/
+	/*Las subids es impementarla en otro metodo aparte.Buenaas practicas*/
+	/*Esto se obtiene del objeto request @RequestParam("archivo") y lo injecta en archivo*/
 	@PostMapping("/clientes/upload")
 	public ResponseEntity<?> upload(@RequestParam("archivo") MultipartFile archivo, @RequestParam("id") Long id){
 		Map<String, Object> response = new HashMap<>();
