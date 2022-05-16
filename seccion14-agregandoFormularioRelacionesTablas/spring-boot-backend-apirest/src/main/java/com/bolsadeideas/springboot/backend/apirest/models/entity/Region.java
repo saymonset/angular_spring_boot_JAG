@@ -10,6 +10,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "regiones")
+/*Es importante serializar este objeto ya que estamos trabajando con json y es importante si queremos guardar
+este objeto en la session http*/
 public class Region implements Serializable {
 
 	@Id

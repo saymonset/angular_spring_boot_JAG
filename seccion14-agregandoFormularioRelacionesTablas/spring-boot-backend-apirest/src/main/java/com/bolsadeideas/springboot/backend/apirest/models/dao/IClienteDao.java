@@ -10,6 +10,7 @@ import com.bolsadeideas.springboot.backend.apirest.models.entity.Region;
 
 public interface IClienteDao extends JpaRepository<Cliente, Long>{
 
+	/*usamos @Query de JpaRepository*/
 	@Query("from Region")
 	public List<Region> findAllRegiones();
 }

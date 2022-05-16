@@ -41,17 +41,30 @@ public class Cliente implements Serializable {
 	@Email(message="no es una dirección de correo bien formada")
 	@Column(nullable=false, unique=true)
 	private String email;
-	
+
 	@NotNull(message ="no puede estar vacio")
 	@Column(name="create_at")
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
 	
 	private String foto;
-	
+
 	@NotNull(message="la región no puede ser vacia")
+	/*carga perezosa*/
+	/*Cuando se llame el metodo getRegion, hay recien , se realiza la carga*/
 	@ManyToOne(fetch=FetchType.LAZY)
+	/*Aqui indicamos cual va hacr nuestra llave foranea. El campo de la tabla cliente que mapeara a regiones*/
+	/*Si se omite, va a colocar de forma automatica este mismo JoinColumn tomando el nombre del atributo region y sumandole un
+    sufijo id. Quedaria en region_id. Si quieres cambiar ese nombre, creas el@JoinColumn("NameCampoForaneo")*/
 	@JoinColumn(name="region_id")
+/*	Con lazy, se genera un proxy al objeto region entity, Este proxy va a generar otros atributos adicionales que
+	son propios del framework, entonces, esos atributos que genera de esa clase proxy de region lo  debemos quitar,
+	omitir del json con @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}).
+  Esta anotacion no tienen nada que ver con entity, solo vamos a omitir estos atributos en la generacion del json.
+  ES un arreglo y se colocan dos atribtos.
+  hibernateLazyInitializer, handler
+
+	*/
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Region region;
 	
