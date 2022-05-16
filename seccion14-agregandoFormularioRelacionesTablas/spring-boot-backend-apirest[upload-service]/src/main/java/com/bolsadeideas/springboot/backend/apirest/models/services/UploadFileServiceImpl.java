@@ -15,10 +15,6 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-/*mi clase concreta*/
-/*Con este stereotipo va a quedar guardad esta instancia en el contenedor de spring y la podemos iyectar mas adelante
-* en el controlador
-* */
 @Service
 public class UploadFileServiceImpl implements IUploadFileService{
 	
@@ -31,18 +27,14 @@ public class UploadFileServiceImpl implements IUploadFileService{
 		
 		Path rutaArchivo = getPath(nombreFoto);
 		log.info(rutaArchivo.toString());
-
-		//creamos la instancia UrlResource
-		//pasamos la ruta de archivo convertida a una uri
+		
 		Resource recurso = new UrlResource(rutaArchivo.toUri());
 		
 		if(!recurso.exists() && !recurso.isReadable()) {
-			//obtenemos directamente la imagen del resource
 			rutaArchivo = Paths.get("src/main/resources/static/images").resolve("no-usuario.png").toAbsolutePath();
 			
 			recurso = new UrlResource(rutaArchivo.toUri());
-
-			//registramos los logs
+			
 			log.error("Error no se pudo cargar la imagen: " + nombreFoto);
 			
 		}
@@ -51,15 +43,12 @@ public class UploadFileServiceImpl implements IUploadFileService{
 
 	@Override
 	public String copiar(MultipartFile archivo) throws IOException {
-
-		//concatenamos un nombre a;eatorio que sea unico para ese usuario asi sea el mismo nmbre del file que sube con UUID.randomUUID()
-		//si e archivo tiene espacios en blanco, se reemplazan con nada
+		
 		String nombreArchivo = UUID.randomUUID().toString() + "_" +  archivo.getOriginalFilename().replace(" ", "");
 		
 		Path rutaArchivo = getPath(nombreArchivo);
 		log.info(rutaArchivo.toString());
-
-		/*aqui ya subimos l archivo a la ruta escojida*/
+		
 		Files.copy(archivo.getInputStream(), rutaArchivo);
 		
 		return nombreArchivo;
@@ -69,9 +58,7 @@ public class UploadFileServiceImpl implements IUploadFileService{
 	public boolean eliminar(String nombreFoto) {
 		
 		if(nombreFoto !=null && nombreFoto.length() >0) {
-			//obtenemos la foto con su ruta
 			Path rutaFotoAnterior = Paths.get("uploads").resolve(nombreFoto).toAbsolutePath();
-			/*convertimos a un archivo*/
 			File archivoFotoAnterior = rutaFotoAnterior.toFile();
 			if(archivoFotoAnterior.exists() && archivoFotoAnterior.canRead()) {
 				archivoFotoAnterior.delete();
@@ -84,10 +71,6 @@ public class UploadFileServiceImpl implements IUploadFileService{
 
 	@Override
 	public Path getPath(String nombreFoto) {
-		//este directorio esta ajeno a nuestro proyecto, pero aca lo colocaron dentro y se busca
-		//internnamente a traves de sta sintaxi
-		//Como esta dentro de nuestro proecto, se define como una ruta relativa a nuestro proyecto "uploads"
-		//Si es ruta externa, e debe colocar la ruta absoluta ejemplo: c:\\ruta_absoluta
 		return Paths.get(DIRECTORIO_UPLOAD).resolve(nombreFoto).toAbsolutePath();
 	}
 

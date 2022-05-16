@@ -9,7 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface IUploadFileService {
 
-	//reutilizar esta interface para subir imagenes en el sistemz operativo directamente
 	public Resource cargar(String nombreFoto) throws MalformedURLException;
 	public String copiar(MultipartFile archivo) throws IOException;
 	public boolean eliminar(String nombreFoto);
