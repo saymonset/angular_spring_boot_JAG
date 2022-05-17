@@ -67,12 +67,24 @@
 
         <!-- JDK 9+ -->
 		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+		<!--
+           Esta api ya no viene en el core de java despues de la 8, por lo tanto hay que agregarla manualmente
+           NoClassDefFoundError: javax/xml/bind/JAXBException
+           Para evitar esa excepicion despues del java 8, la agregamos
+		https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime -->
+
+		<!--Especificacion-->
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime -->
+		<!--
+           Esta api ya no viene en el core de java despues de la 8, por lo tanto hay que agregarla manualmente
+           NoClassDefFoundError: javax/xml/bind/JAXBException
+           Para evitar esa excepicion despues del java 8, la agregamos
+		https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime -->
+		<!--Implementacion. Quitamos la version porque la maneja spring-boot-->
 		<dependency>
 			<groupId>org.glassfish.jaxb</groupId>
 			<artifactId>jaxb-runtime</artifactId>

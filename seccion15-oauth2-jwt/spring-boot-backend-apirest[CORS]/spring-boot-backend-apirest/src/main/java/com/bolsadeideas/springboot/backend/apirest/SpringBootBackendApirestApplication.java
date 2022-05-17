@@ -23,6 +23,8 @@ Lo conertimos a un objeto javaScript
 JSON.parse(windows.atob(payload));
 
 En resumen los jwt son codificados en doble via, son reversibles
+
+Spring security es n proyecto que se integra con spring framework
 */
 @SpringBootApplication
 public class SpringBootBackendApirestApplication implements CommandLineRunner{
