@@ -6,6 +6,24 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+
+
+		/*#
+		Decodificar un JWT minuto 9  de la seccion 15_>122
+
+		tenemos el token
+let token =  "token.token.token";
+#lo separamos en un arreglo con split y el punto, obtenemos el segundo isicion del arreglo
+let payload = token.split(".")[1];
+#Imprimimos el payload y lo copiamos
+payload;
+##Lo decodificamos con javascript base 64
+window.atob(payload);
+Lo conertimos a un objeto javaScript
+JSON.parse(windows.atob(payload));
+
+En resumen los jwt son codificados en doble via, son reversibles
+*/
 @SpringBootApplication
 public class SpringBootBackendApirestApplication implements CommandLineRunner{
 
