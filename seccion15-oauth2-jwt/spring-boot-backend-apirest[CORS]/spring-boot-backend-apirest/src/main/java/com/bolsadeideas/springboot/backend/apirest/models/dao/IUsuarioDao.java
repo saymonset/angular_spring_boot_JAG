@@ -6,7 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 import com.bolsadeideas.springboot.backend.apirest.models.entity.Usuario;
 
 public interface IUsuarioDao extends CrudRepository<Usuario, Long>{
-	
+
+	//A traves del nombre del metodo (Query method name) se ejecutara la consulta jpql
+	// findBy implementamos con bye el where
 	public Usuario findByUsername(String username);
 	
 	@Query("select u from Usuario u where u.username=?1")
