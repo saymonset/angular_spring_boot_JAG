@@ -45,6 +45,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(this.usuarioService).passwordEncoder(passwordEncoder());
 	}
 
+	/*Esto se registra para  inyectarlo en AuthorizationServerConfig que viene de WebSecurityConfigurerAdapter*/
+	//Para asegurarnos que justo sea ese el objeto , lo llamamos con qualifier y el nombre que es el calificador
+	//redundamos porque si no lo colocamos , es el mismo nombre del metodo. Puedes colocar otro nombre y sustituir
+	//en qualifier
 	@Bean("authenticationManager")
 	@Override
 	protected AuthenticationManager authenticationManager() throws Exception {

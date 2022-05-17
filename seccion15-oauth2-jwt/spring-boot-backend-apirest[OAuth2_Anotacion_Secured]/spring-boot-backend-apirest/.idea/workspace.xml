@@ -13,15 +13,25 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SpringSecurityConfig.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SpringSecurityConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/bolsadeideas/springboot/backend/apirest/auth/SpringSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="30" column="6" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="33" selection-end-column="7" />
+            <state relative-caret-position="374">
+              <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
               <folding>
                 <element signature="e#1809#1810#0" expanded="true" />
                 <element signature="e#1850#1851#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuthorizationServerConfig.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/bolsadeideas/springboot/backend/apirest/auth/AuthorizationServerConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="21" column="60" lean-forward="false" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="83" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -47,6 +57,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/bolsadeideas/springboot/backend/apirest/auth/SpringSecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/bolsadeideas/springboot/backend/apirest/auth/AuthorizationServerConfig.java" />
       </list>
     </option>
   </component>
@@ -700,12 +711,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1652787132719</updated>
-      <workItem from="1652787137095" duration="1040000" />
+      <workItem from="1652787137095" duration="3534000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1040000" />
+    <option name="totallyTimeSpent" value="3534000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="114" y="0" width="1568" height="1052" extended-state="6" />
@@ -753,14 +764,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bolsadeideas/springboot/backend/apirest/auth/AuthorizationServerConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/bolsadeideas/springboot/backend/apirest/models/services/UsuarioService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -771,12 +774,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/bolsadeideas/springboot/backend/apirest/auth/SpringSecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="30" column="6" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="33" selection-end-column="7" />
+        <state relative-caret-position="374">
+          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
           <folding>
             <element signature="e#1809#1810#0" expanded="true" />
             <element signature="e#1850#1851#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bolsadeideas/springboot/backend/apirest/auth/AuthorizationServerConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="21" column="60" lean-forward="false" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
