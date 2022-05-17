@@ -26,6 +26,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	/*passwordEncoder: Metodo que se encarga de crear este passwordEncode usando BCryptPassword*/
 	/*Registramos en el contenedor de spring este metod con @Bean para poderlo inyectar mas tarde*/
+
+	/*Para evitar un posible error en las ultimas versiones de spring boot 2.6.0 en adelante:*/
+	/*@Bean
+	public static BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}*/
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
