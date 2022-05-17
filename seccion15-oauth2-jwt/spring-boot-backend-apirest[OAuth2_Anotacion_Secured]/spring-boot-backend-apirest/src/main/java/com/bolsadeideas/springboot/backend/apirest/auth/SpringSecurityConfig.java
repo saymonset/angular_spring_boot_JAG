@@ -12,21 +12,30 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+/*Registramos la clase de servicio UsuarioService que implementa la interface  UserDetailsService, la reistramos en el
+autentication manager para que se pueda realizar el proceso de autenticacion utilizando jpa*/
+
 @EnableGlobalMethodSecurity(securedEnabled=true)
+/*Configuracion de spring*/
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserDetailsService usuarioService;
-	
+
+
+	/*passwordEncoder: Metodo que se encarga de crear este passwordEncode usando BCryptPassword*/
+	/*Registramos en el contenedor de spring este metod con @Bean para poderlo inyectar mas tarde*/
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
 	@Override
+	//Injectamos via argumento el metodo AuthenticationManagerBuilder
 	@Autowired
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		/*passwordEncoder: Metodo que se encarga de crear este passwordEncode usando BCryptPassword*/
 		auth.userDetailsService(this.usuarioService).passwordEncoder(passwordEncoder());
 	}
 
