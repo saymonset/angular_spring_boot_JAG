@@ -18,6 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bolsadeideas.springboot.backend.apirest.models.dao.IUsuarioDao;
 import com.bolsadeideas.springboot.backend.apirest.models.entity.Usuario;
 
+/*Esta interfaz la provee springSecurity: UserDetailsService, es una interfaz propia para trabajar con jpa o cualquier
+tipo de proveedor para implementar el proceso de login*/
 @Service
 public class UsuarioService implements IUsuarioService, UserDetailsService{
 	
@@ -36,13 +38,16 @@ public class UsuarioService implements IUsuarioService, UserDetailsService{
 			logger.error("Error en el login: no existe el usuario '"+username+"' en el sistema!");
 			throw new UsernameNotFoundException("Error en el login: no existe el usuario '"+username+"' en el sistema!");
 		}
-		
+
+		/*Convertimos los roles al tipo GrantedAuthority*/
+		/*Con peek es una expesion anonima, de flecha, una expresion lambda, recibimos el autorities de springSecurity
+				y lo imprimimos en el log*/
 		List<GrantedAuthority> authorities = usuario.getRoles()
 				.stream()
 				.map(role -> new SimpleGrantedAuthority(role.getNombre()))
 				.peek(authority -> logger.info("Role: " + authority.getAuthority()))
 				.collect(Collectors.toList());
-		
+
 		return new User(usuario.getUsername(), usuario.getPassword(), usuario.getEnabled(), true, true, true, authorities);
 	}
 
