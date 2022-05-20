@@ -20,6 +20,8 @@ import com.bolsadeideas.springboot.backend.apirest.models.entity.Usuario;
 
 /*Esta interfaz la provee springSecurity: UserDetailsService, es una interfaz propia para trabajar con jpa o cualquier
 tipo de proveedor para implementar el proceso de login*/
+
+/*Esta interface debe estar registrada en el autentication manager. Se debe registrar*/
 @Service
 public class UsuarioService implements IUsuarioService, UserDetailsService{
 	
