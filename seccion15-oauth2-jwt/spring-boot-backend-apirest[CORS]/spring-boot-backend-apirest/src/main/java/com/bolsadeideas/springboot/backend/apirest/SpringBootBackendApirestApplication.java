@@ -39,7 +39,7 @@ public class SpringBootBackendApirestApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		String password = "12345";
-		
+		/*generamos 4 password para la misma contrasena 12345*/
 		for (int i = 0; i < 4; i++) {
 			String passwordBcrypt = passwordEncoder.encode(password);
 			System.out.println(passwordBcrypt);
