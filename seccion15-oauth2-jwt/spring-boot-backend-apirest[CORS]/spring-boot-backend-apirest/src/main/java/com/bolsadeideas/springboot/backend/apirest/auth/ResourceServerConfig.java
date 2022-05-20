@@ -15,12 +15,18 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+/*Este es el servidor de recursos : ResourceServerConfigurerAdapter*/
+/*Se encargar de dar accesos a los clientes de los recursos de la aplicacion siempre y cuando el token
+que se envia por las cabeceras sea un token valido*/
 @Configuration
+/*Para habilitar esta autorizacion server de recursos, anotamos con esta anotacion*/
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	@Override
+	/*configuracion por lado de oauth*/
 	public void configure(HttpSecurity http) throws Exception {
+		// todas las reglas para autorizacion
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/clientes", "/api/clientes/page/**", "/api/uploads/img/**", "/images/**").permitAll()
 		/*.antMatchers(HttpMethod.GET, "/api/clientes/{id}").hasAnyRole("USER", "ADMIN")
 		.antMatchers(HttpMethod.POST, "/api/clientes/upload").hasAnyRole("USER", "ADMIN")

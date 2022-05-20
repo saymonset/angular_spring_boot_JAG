@@ -74,11 +74,17 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 	@Override
+	/*configuracion por lado de spring*/
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.anyRequest().authenticated()
 		.and()
+				//deshabilitamos csrf:Cross-site para evitar cualquier ataque del tipo cross-site request forgery o falsificacion
+				//de peticion en sitios cruzados.Basicamente es parz proteger nuestros formulariosa traves de un token que no tengan
+				//ataques pero como estamos trabajand con angular en un bloque separado, no necesitamos esta proteccion
 		.csrf().disable()
+				//deshabilitamos las sessiones por la parte de springSecurity o spring
+				//La dejamos sin estado o staless ya ue vamos a usartoken para autenticar
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 

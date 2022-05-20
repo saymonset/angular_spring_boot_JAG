@@ -38,6 +38,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	private InfoAdicionalToken infoAdicionalToken;
 
 	@Override
+
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
 		/*le damos permiso a cualquier usuario anonimo o no para autenticarse*/
 		//crea el token
