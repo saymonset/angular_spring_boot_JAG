@@ -2,6 +2,7 @@ package com.bolsadeideas.springboot.backend.apirest.auth;
 
 import java.util.Arrays;
 
+import org.omg.PortableServer.POA;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,10 +29,18 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	public void configure(HttpSecurity http) throws Exception {
 		// todas las reglas para autorizacion
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/clientes", "/api/clientes/page/**", "/api/uploads/img/**", "/images/**").permitAll()
+
+				/*Todas estas reglas de roles, la llevamos a anotaciones*/
+				/*Personalizando los permisos para ciertas paginas.
+		   Puedes en los roles colocar USER porque automaticamente es insertado el ROLE_  */
+			/*hasAnyRole es para agregar mas de un role
+		hasRole es para un solo role*/
 		/*.antMatchers(HttpMethod.GET, "/api/clientes/{id}").hasAnyRole("USER", "ADMIN")
 		.antMatchers(HttpMethod.POST, "/api/clientes/upload").hasAnyRole("USER", "ADMIN")
 		.antMatchers(HttpMethod.POST, "/api/clientes").hasRole("ADMIN")
+		para todas las rutas /api/clientes  se necesita role admin
 		.antMatchers("/api/clientes/**").hasRole("ADMIN")*/
+		/*Pars el resto de las rutas es con usuario autenticado sin importar el role*/
 		.anyRequest().authenticated()
 		.and().cors().configurationSource(corsConfigurationSource());
 	}

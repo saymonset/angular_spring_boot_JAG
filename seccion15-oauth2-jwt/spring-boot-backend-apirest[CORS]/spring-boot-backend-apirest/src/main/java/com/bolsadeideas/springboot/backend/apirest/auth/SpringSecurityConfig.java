@@ -16,6 +16,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 /*UsuarioService: Esta interface debe estar registrada en el autentication manager(AuthenticationManager). Se debe registrar*/
+/*Con esto habilitamos roles de seguridad en las anotaciones:  securedEnabled=true).
+*
+* @EnableGlobalMethodSecurity(securedEnabled=true) , ahora en los metodos del controlador, colocar la seguridad*/
 @EnableGlobalMethodSecurity(securedEnabled=true)
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {

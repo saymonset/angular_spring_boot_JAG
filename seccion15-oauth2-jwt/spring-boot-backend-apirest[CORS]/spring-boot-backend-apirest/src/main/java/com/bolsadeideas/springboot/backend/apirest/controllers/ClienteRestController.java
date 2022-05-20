@@ -62,7 +62,9 @@ public class ClienteRestController {
 		Pageable pageable = PageRequest.of(page, 4);
 		return clienteService.findAll(pageable);
 	}
-	
+
+
+	/*Con el @secured colocamos el role como anotaciones y si hay que colocar el pefijo ROLE_*/
 	@Secured({"ROLE_ADMIN", "ROLE_USER"})
 	@GetMapping("/clientes/{id}")
 	public ResponseEntity<?> show(@PathVariable Long id) {
