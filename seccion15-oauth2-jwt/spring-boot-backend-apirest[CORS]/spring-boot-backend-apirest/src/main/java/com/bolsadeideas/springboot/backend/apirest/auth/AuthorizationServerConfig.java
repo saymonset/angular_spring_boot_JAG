@@ -90,7 +90,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Bean
 	public JwtAccessTokenConverter accessTokenConverter() {
+		/*Toda clave RSA siempre comenzara con -----BEGIN*/
 		JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
+		/*Aqui colocamos nuestro codigo. Alguna clave secreta importante*/
+		/*con esta llave secreta se crea nuestro token en el servidor de autorizacion y luego es enviada al svidor
+				de recursos para validar el token cuando se hagan peciiones*/
 		jwtAccessTokenConverter.setSigningKey(JwtConfig.RSA_PRIVADA);
 		jwtAccessTokenConverter.setVerifierKey(JwtConfig.RSA_PUBLICA);
 		return jwtAccessTokenConverter;
