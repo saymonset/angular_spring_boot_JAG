@@ -90,7 +90,27 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Bean
 	public JwtAccessTokenConverter accessTokenConverter() {
+		/*Generar certificados RSA. Herramientas con herramientas
+		como: openssl, la que trae java como keytools,openssh a traves de sshkeygen*/
 		/*Toda clave RSA siempre comenzara con -----BEGIN*/
+		/*para generar nuestro certificado con la llave publica y privada se coloca esta intruccion con la herramienta openssl*/
+/*		openssl genrsa -out jwtsimon.pem*/
+/*con el comando out es como se va allamar el archivo a generar.
+				la extension pem es importante, es una extension de certificado digitsl*/
+
+/*
+con esta instruccion se muestra la llave privada
+		openssl rsa -in jwtsimon.pem
+*/
+
+/*
+Con esta generamos la llave publica
+
+		openssl rsa -in jwtsimon.pem -pubout
+*/
+
+
+
 		JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
 		/*Aqui colocamos nuestro codigo. Alguna clave secreta importante*/
 		/*con esta llave secreta se crea nuestro token en el servidor de autorizacion y luego es enviada al svidor
