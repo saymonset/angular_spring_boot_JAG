@@ -69,6 +69,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	/*se encarga de todo el proceso de autenticacion y de validar el token*/
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+		/*Con TokenEnchancerChain agregamos informacion adicional que viene del componente InfoAdicionalToken*/
 		TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
 		tokenEnhancerChain.setTokenEnhancers(Arrays.asList(infoAdicionalToken, accessTokenConverter()));
 		/*primer paso es authenticationManager*/
