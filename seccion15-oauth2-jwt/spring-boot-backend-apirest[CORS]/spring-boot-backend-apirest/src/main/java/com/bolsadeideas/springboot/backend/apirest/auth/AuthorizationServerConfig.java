@@ -39,16 +39,28 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+		/*le damos permiso a cualquier usuario anonimo o no para autenticarse*/
+		//crea el token
 		security.tokenKeyAccess("permitAll()")
+				// este es para chequear el token
+				//EndPoint que verifica el token y su firma: "/oauth/check_token"
+				//Solo accede a esta ruta los clientes autenticados
 		.checkTokenAccess("isAuthenticated()");
 	}
 
+	/*aqui configuramos nuestro cliente, nuestra aplicaciones que van a acceder al api rest*/
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+		/*registramos la aplicacion que se va a conectar con nuestro backend*/
 		clients.inMemory().withClient("angularapp")
 		.secret(passwordEncoder.encode("12345"))
+				//Los permisos que va a tener la aplicacion
 		.scopes("read", "write")
+				//muy importante , es el tipo de concesion para poder acceder a traves de password, o refresh_token
+				//Aqui es como vas obtener el token, en nuestro caso es con passowrd y refresh_token
+				//refresh_token nos permite obtener un token renovado antes que caduque el token
 		.authorizedGrantTypes("password", "refresh_token")
+				//tiempo caducidad, una hora es 3600 seg
 		.accessTokenValiditySeconds(3600)
 		.refreshTokenValiditySeconds(3600);
 	}
