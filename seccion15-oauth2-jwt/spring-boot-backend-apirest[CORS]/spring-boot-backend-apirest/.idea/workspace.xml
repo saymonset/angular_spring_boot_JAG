@@ -1092,7 +1092,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../seccion16-oauth2-jwt/clientes-app" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -1518,12 +1518,12 @@
       <workItem from="1652779189851" duration="7193000" />
       <workItem from="1652970232557" duration="283000" />
       <workItem from="1653039292153" duration="17844000" />
-      <workItem from="1653299115282" duration="546000" />
+      <workItem from="1653299115282" duration="1173000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25866000" />
+    <option name="totallyTimeSpent" value="26493000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="114" y="0" width="1568" height="1052" extended-state="6" />
