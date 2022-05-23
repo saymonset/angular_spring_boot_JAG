@@ -22,6 +22,8 @@ export class ClienteService {
   private agregarAuthorizationHeader() {
     let token = this.authService.token;
     if (token != null) {
+      /* aqui mandamos el token en las cabeceras */
+      /* El valor tiene que partir con el tipo Bearer. Muy importante */
       return this.httpHeaders.append('Authorization', 'Bearer ' + token);
     }
     return this.httpHeaders;
@@ -52,6 +54,7 @@ export class ClienteService {
   }
 
   getRegiones(): Observable<Region[]> {
+    //agregamos cabeceras con cada metodo protegido
     return this.http.get<Region[]>(this.urlEndPoint + '/regiones', { headers: this.agregarAuthorizationHeader() }).pipe(
       catchError(e => {
         this.isNoAutorizado(e);
@@ -84,6 +87,7 @@ export class ClienteService {
   }
 
   create(cliente: Cliente): Observable<Cliente> {
+     //agregamos cabeceras con cada metodo protegido 
     return this.http.post(this.urlEndPoint, cliente, { headers: this.agregarAuthorizationHeader() })
       .pipe(
         map((response: any) => response.cliente as Cliente),
@@ -120,6 +124,7 @@ export class ClienteService {
   }
 
   update(cliente: Cliente): Observable<any> {
+      //agregamos cabeceras con cada metodo protegido
     return this.http.put<any>(`${this.urlEndPoint}/${cliente.id}`, cliente, { headers: this.agregarAuthorizationHeader() }).pipe(
       catchError(e => {
 
@@ -139,6 +144,7 @@ export class ClienteService {
   }
 
   delete(id: number): Observable<Cliente> {
+      //agregamos cabeceras con cada metodo protegido
     return this.http.delete<Cliente>(`${this.urlEndPoint}/${id}`, { headers: this.agregarAuthorizationHeader() }).pipe(
       catchError(e => {
 
@@ -155,13 +161,22 @@ export class ClienteService {
 
   subirFoto(archivo: File, id): Observable<HttpEvent<{}>> {
 
+    /*
+    
+  Agregamos cabeceras con cada metodo protegido
+    aqui en la seguridad es dstinto porque estamos mandando un FormData y no un appication JSON */
+
     let formData = new FormData();
     formData.append("archivo", archivo);
     formData.append("id", id);
 
+    /* httpHeaders: es ua cabecera privada del metodo 
+      Agregamos cabeceras para metodo protegido*/
+    
     let httpHeaders = new HttpHeaders();
     let token = this.authService.token;
     if (token != null) {
+        //agregamos cabeceras con cada metodo protegido
       httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
     }
 
