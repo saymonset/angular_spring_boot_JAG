@@ -108,6 +108,8 @@ export class AuthService {
   }
 
   hasRole(role: string): boolean {
+    //si el get usuario en roles con includes permite validar si 
+    //existe algun elemento dentro de ese arreglo
     if (this.usuario.roles.includes(role)) {
       return true;
     }
