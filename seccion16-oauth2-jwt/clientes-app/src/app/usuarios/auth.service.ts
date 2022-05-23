@@ -117,7 +117,10 @@ export class AuthService {
   logout(): void {
     this._token = null;
     this._usuario = null;
+    /* dos formas de borrar session */
+    /* borra todas las variables de sesion */
     sessionStorage.clear();
+    /* Borra cada una por separado de session */
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('usuario');
   }
