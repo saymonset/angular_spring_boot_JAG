@@ -36,8 +36,13 @@ export class ClienteService {
   a permitir la accion solicitada por falta de permisos */
     
   private isNoAutorizado(e): boolean {
+    /* 401 de no autenticado */
     if (e.status == 401) {
 
+      /* Si el token expiro y aunque estemos autenticados, nos dara este error
+      401 de no autenticado */
+      /* Si estamos autenticados pero dio error 401, el token expiro
+      y cerramos la session */
       if (this.authService.isAuthenticated()) {
         this.authService.logout();
       }
