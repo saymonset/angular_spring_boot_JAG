@@ -36,6 +36,9 @@ export class LoginComponent implements OnInit {
 
       this.authService.guardarUsuario(response.access_token);
       this.authService.guardarToken(response.access_token);
+      //Si se fijan el gueter usuario se maneja como un atributo, no un metodo a pesar 
+      //que si es un metodo de tipo get pero lo utilizamos como 
+      //si fuera un atributo sin los parentesis
       let usuario = this.authService.usuario;
       this.router.navigate(['/clientes']);
       swal('Login', `Hola ${usuario.username}, has iniciado sesión con éxito!`, 'success');

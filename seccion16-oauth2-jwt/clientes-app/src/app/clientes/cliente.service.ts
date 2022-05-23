@@ -26,7 +26,13 @@ export class ClienteService {
     }
     return this.httpHeaders;
   }
+  
 
+  /* 401 es no autorizado. Indica que la peticion request no ha sido ejecutada porque carece
+  de credenciales validas de autenticacion */
+  /* El 403  es forbidden que es un recurso prohibido. Indica que el servidor se niega 
+  a permitir la accion solicitada por falta de permisos */
+    
   private isNoAutorizado(e): boolean {
     if (e.status == 401) {
 
