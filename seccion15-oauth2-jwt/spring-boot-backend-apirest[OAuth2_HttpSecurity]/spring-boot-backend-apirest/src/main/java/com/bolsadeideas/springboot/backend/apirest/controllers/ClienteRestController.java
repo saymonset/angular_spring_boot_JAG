@@ -38,6 +38,11 @@ import com.bolsadeideas.springboot.backend.apirest.models.entity.Region;
 import com.bolsadeideas.springboot.backend.apirest.models.services.IClienteService;
 import com.bolsadeideas.springboot.backend.apirest.models.services.IUploadFileService;
 
+
+/*configuracion del cors
+		https://docs.spring.io/spring-security/reference/5.6.4/servlet/integrations/cors.html#page-title*/
+
+
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 @RequestMapping("/api")

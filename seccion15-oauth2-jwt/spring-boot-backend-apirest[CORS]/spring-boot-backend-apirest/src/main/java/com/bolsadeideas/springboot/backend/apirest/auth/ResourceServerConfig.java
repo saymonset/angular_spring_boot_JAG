@@ -42,22 +42,31 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		.antMatchers("/api/clientes/**").hasRole("ADMIN")*/
 		/*Pars el resto de las rutas es con usuario autenticado sin importar el role*/
 		.anyRequest().authenticated()
+				/*/aqui pasamos el metodo creado para cors*/
 		.and().cors().configurationSource(corsConfigurationSource());
 	}
-	
+
+
+	/*configuracion del cors
+		https://docs.spring.io/spring-security/reference/5.6.4/servlet/integrations/cors.html#page-title*/
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration config = new CorsConfiguration();
+		/*agregamos los dominios de autorizacion*/
 		config.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+		/*configurar todos los verbos permitidos*/
 		config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 		config.setAllowCredentials(true);
+		/*las cabeceras que vamos  mandar*/
 		config.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization"));
 		
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		/*todas las rutas del back*/
 		source.registerCorsConfiguration("/**", config);
 		return source;
 	}
-	
+
+	/*Crear un filtro con la prioridad mas alta de los filtros de spring*/
 	@Bean
 	public FilterRegistrationBean<CorsFilter> corsFilter(){
 		FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<CorsFilter>(new CorsFilter(corsConfigurationSource()));
