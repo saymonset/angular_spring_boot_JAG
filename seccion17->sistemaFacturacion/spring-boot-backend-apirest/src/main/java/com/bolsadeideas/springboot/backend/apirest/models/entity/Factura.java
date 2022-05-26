@@ -38,11 +38,14 @@ public class Factura implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
 
+	/*Estos atributos debemos excluir o ignorar en el json : "hibernateLazyInitializer", "handler"*/
+	/*Aqui por cada Cliente en factura, ignoramos la relacion inversa que seria el facturas para no entrar al loop infinito*/
 	@JsonIgnoreProperties(value={"facturas", "hibernateLazyInitializer", "handler"}, allowSetters=true)
 	@ManyToOne(fetch = FetchType.LAZY)
 	//@JoinColumn(name = "saymoncliente_id") Con esto cambiamos la clave foranea, por defecto es cliente_id
 	private Cliente cliente;
 
+	/*Estos atributos debemos excluir o ignorar en el json : "hibernateLazyInitializer", "handler"*/
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 /*	en el entity ItemFactura no tiene relacion inversa con Factura en sus atributos, pero necesitamos la llave foranea
