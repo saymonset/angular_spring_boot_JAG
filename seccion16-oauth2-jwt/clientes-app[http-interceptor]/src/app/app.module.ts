@@ -61,6 +61,7 @@ const routes: Routes = [
   ],
   providers: [ClienteService,
     { provide: LOCALE_ID, useValue: 'es' },
+    /* aqui configuramos nuestro interceptor */
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
   bootstrap: [AppComponent]

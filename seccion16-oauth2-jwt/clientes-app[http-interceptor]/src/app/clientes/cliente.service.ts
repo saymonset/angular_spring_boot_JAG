@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class ClienteService {
   private urlEndPoint: string = 'http://localhost:8080/api/clientes';
 
+  /* quitamos todo el httpheader porque ya se ingresa atraves de un interceptor */
+
   constructor(private http: HttpClient, private router: Router) { }
 
   getRegiones(): Observable<Region[]> {
