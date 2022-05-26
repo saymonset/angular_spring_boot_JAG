@@ -28,6 +28,7 @@ public class FacturaRestController {
 	private IClienteService clienteService;
 
 	@Secured({"ROLE_ADMIN", "ROLE_USER"})
+	//este es el endpoint: @GetMapping("/facturas/{id}")
 	@GetMapping("/facturas/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public Factura show(@PathVariable Long id) {

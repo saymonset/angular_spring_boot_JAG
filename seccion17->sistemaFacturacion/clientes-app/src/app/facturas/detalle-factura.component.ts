@@ -16,7 +16,9 @@ export class DetalleFacturaComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    /* Chequemao el parametro que nos trae */
     this.activatedRoute.paramMap.subscribe(params => {
+      /* con + lo convertimos a un number */
       let id = +params.get('id');
       this.facturaService.getFactura(id).subscribe(factura => this.factura = factura);
     });
