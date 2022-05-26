@@ -25,6 +25,9 @@ public class ItemFactura implements Serializable {
 
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
+
+	/*Como itemsFactura es el dueno de la relacion con producto. Si se fija, abajo Tenemos el tipo Producto, por*/
+	/*lo tanto de forma automatica va a generar la clave foranea producto_id*/
 	@JoinColumn(name = "producto_id")
 	private Producto producto;
 
@@ -44,6 +47,7 @@ public class ItemFactura implements Serializable {
 		this.cantidad = cantidad;
 	}
 
+	/*se coloca getImporte para obtenerlo simplificado en nuestro json*/
 	public Double getImporte() {
 		return cantidad.doubleValue() * producto.getPrecio();
 	}

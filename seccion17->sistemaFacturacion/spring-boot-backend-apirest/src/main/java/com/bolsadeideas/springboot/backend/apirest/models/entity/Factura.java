@@ -40,10 +40,13 @@ public class Factura implements Serializable {
 
 	@JsonIgnoreProperties(value={"facturas", "hibernateLazyInitializer", "handler"}, allowSetters=true)
 	@ManyToOne(fetch = FetchType.LAZY)
+	//@JoinColumn(name = "saymoncliente_id") Con esto cambiamos la clave foranea, por defecto es cliente_id
 	private Cliente cliente;
 
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+/*	en el entity ItemFactura no tiene relacion inversa con Factura en sus atributos, pero necesitamos la llave foranea
+  Por eso es importante crearla con @JoinColumn(name = "factura_id")  en la clase padre que es Factura*/
 	@JoinColumn(name = "factura_id")
 	private List<ItemFactura> items;
 
@@ -51,6 +54,7 @@ public class Factura implements Serializable {
 		items = new ArrayList<>();
 	}
 
+	/*evento de hibernate*/
 	@PrePersist
 	public void prePersist() {
 		this.createAt = new Date();
@@ -104,6 +108,7 @@ public class Factura implements Serializable {
 		this.items = items;
 	}
 
+	/*se coloca getTotal para obtenerlo simplificado en nuestro json*/
 	public Double getTotal() {
 		Double total = 0.00;
 		for (ItemFactura item : items) {

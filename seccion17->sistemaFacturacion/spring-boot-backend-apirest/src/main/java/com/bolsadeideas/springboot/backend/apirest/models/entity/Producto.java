@@ -28,6 +28,7 @@ public class Producto implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
 
+	/*Inicializamos la fecha actual antes de persistir el objeto*/
 	@PrePersist
 	public void prePersist() {
 		this.createAt = new Date();
