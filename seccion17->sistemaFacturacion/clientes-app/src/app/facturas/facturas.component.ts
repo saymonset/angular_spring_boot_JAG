@@ -40,6 +40,7 @@ export class FacturasComponent implements OnInit {
     this.productosFiltrados = this.autocompleteControl.valueChanges
       .pipe(
         map(value => typeof value === 'string' ? value : value.nombre),
+        /* flatMap permite transformar los datos que viene de un observable a otro observable */
         flatMap(value => value ? this._filter(value) : [])
       );
   }
@@ -49,7 +50,7 @@ export class FacturasComponent implements OnInit {
 
     return this.facturaService.filtrarProductos(filterValue);
   }
-
+/* con ? es opcional */
   mostrarNombre(producto?: Producto): string | undefined {
     return producto ? producto.nombre : undefined;
   }

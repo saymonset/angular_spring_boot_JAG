@@ -33,7 +33,9 @@
       <div class="form-group row">
         <div class="col-sm-6">
           <mat-form-field>
-            <input type="text" placeholder="Añadir producto" aria-label="Productos" matInput [formControl]="autocompleteControl" [matAutocomplete]="auto">
+            <input type="text" placeholder="Añadir producto" aria-label="Productos" 
+            matInput [formControl]="autocompleteControl" [matAutocomplete]="auto">
+            <!-- mostrar con y define los nombres del metodo sib parentesis: mostrarNombre -->
             <mat-autocomplete #auto="matAutocomplete" [displayWith]="mostrarNombre" (optionSelected)="seleccionarProducto($event)">
              <!--  Async porque iteramos un observable en ves de un arreglo o una vista -->
               <mat-option *ngFor="let producto of productosFiltrados | async" [value]="producto">
