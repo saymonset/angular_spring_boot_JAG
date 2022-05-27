@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bolsadeideas.springboot.backend.apirest.models.entity.Factura;
 import com.bolsadeideas.springboot.backend.apirest.models.entity.Producto;
 import com.bolsadeideas.springboot.backend.apirest.models.services.IClienteService;
-
+/*Aqui colocamos otros nombres de dominio, ip para prodccion, simolemente colocamos "*" para el ejemplo
+* para que acepte cualquier origen*/
 @CrossOrigin(origins = { "http://localhost:4200", "*" })
 @RestController
 @RequestMapping("/api")
