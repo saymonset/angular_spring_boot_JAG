@@ -1,8 +1,13 @@
 RewriteEngine On
 # If an existing asset or directory is requested go to it as it is
+#Esto lo reescribimos de la documentacion original. REQUEST_FILENAME
+#para poder refrescar la pagina y no nos de un 404
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
 # If the requested resource doesn't exist, use index.html
+##Aqui creamos el archivo .htaccess para configurar apache
+#https://angular.io/guide/deployment
+##indicar la ruta de la alicacion
 RewriteRule ^ /clientes-app/index.html
