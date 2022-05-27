@@ -16,7 +16,10 @@
       <div class="form-group row">
         <label for="descripcion" class="col-sm-2 col-form-label">Descripción</label>
         <div class="col-sm-6">
+          <!-- ngModel contiene una instancia del form Control y nos permite saber si este campoes invalido y nos 
+          permite mostrar el mensaje de error-->
           <input type="text" name="descripcion" [(ngModel)]="factura.descripcion" class="form-control" required #descripcion="ngModel">
+          <!-- a traves de descripcion enlazado al ngModel preguntamos -->
           <div class="alert alert-danger" *ngIf="descripcion.invalid && descripcion.touched || descripcion.invalid && facturaForm.submitted">
             La descripción es requerida.
           </div>
