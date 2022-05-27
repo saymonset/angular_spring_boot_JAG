@@ -6,6 +6,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+/*con ./mvnw.cmd clean package
+java -jar ./target/spring-boot-backend-apirest-0.0.1-snapshot.jar*/
+
 @SpringBootApplication
 public class SpringBootBackendApirestApplication implements CommandLineRunner{
 
