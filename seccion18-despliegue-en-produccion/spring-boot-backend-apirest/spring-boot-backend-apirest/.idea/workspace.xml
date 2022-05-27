@@ -46,7 +46,7 @@
       <file leaf-file-name="import.sql" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/import.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="-294">
               <caret line="14" column="56" lean-forward="false" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
               <folding />
             </state>
@@ -588,12 +588,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1653657250581</updated>
-      <workItem from="1653657253171" duration="466000" />
+      <workItem from="1653657253171" duration="595000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="466000" />
+    <option name="totallyTimeSpent" value="595000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="114" y="0" width="1568" height="1052" extended-state="6" />
@@ -667,7 +667,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/import.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="-294">
           <caret line="14" column="56" lean-forward="false" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
           <folding />
         </state>
