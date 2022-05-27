@@ -83,6 +83,7 @@ export class DetalleComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
 
+        /* eliminamos factura */
         this.facturaService.delete(factura.id).subscribe(
           () => {
             this.cliente.facturas = this.cliente.facturas.filter(f => f !== factura)

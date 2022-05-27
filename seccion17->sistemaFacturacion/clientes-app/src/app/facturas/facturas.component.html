@@ -35,6 +35,7 @@
           <mat-form-field>
             <input type="text" placeholder="Añadir producto" aria-label="Productos" matInput [formControl]="autocompleteControl" [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete" [displayWith]="mostrarNombre" (optionSelected)="seleccionarProducto($event)">
+             <!--  Async porque iteramos un observable en ves de un arreglo o una vista -->
               <mat-option *ngFor="let producto of productosFiltrados | async" [value]="producto">
                 {{producto.nombre}}
               </mat-option>

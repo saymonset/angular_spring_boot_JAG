@@ -18,6 +18,7 @@ export class FacturaService {
   }
 
   delete(id: number): Observable<void> {
+    /* delete el metodo verbo con su argumento */
     return this.http.delete<void>(`${this.urlEndPoint}/${id}`);
   }
 
