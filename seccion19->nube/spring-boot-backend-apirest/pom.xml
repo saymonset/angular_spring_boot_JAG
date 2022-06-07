@@ -90,4 +90,7 @@
 		</plugins>
 	</build>
 
+	<!--Mostrar la console de heroku-->
+  <!--heroku logs tail -->
+
 </project>
