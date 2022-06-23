@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="mensajes")
+/*buenA Practica serializar*/
 public class Mensaje implements Serializable {
 	
 	@Id

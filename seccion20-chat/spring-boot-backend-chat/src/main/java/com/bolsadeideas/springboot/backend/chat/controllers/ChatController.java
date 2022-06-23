@@ -22,8 +22,10 @@ public class ChatController {
 	
 	@Autowired
 	private SimpMessagingTemplate webSocket;
-	
+
+	/*Este es el destino a llegar. Aca no se indica el prefijo /app/, Este prefijo lo usa el cliente*/
 	@MessageMapping("/mensaje")
+	/*Enviar a, es el mensaje que es enviados a todos los subscritos a ese evento*/
 	@SendTo("/chat/mensaje")
 	public Mensaje recibeMensaje(Mensaje mensaje) {
 		mensaje.setFecha(new Date().getTime());

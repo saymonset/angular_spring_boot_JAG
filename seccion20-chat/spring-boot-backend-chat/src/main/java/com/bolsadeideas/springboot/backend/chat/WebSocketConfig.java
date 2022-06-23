@@ -12,7 +12,6 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
-	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
 			/*agregamos la ruta, cualquiera, en este caso /chat-websocket*/
 			registry.addEndpoint("/chat-websocket")
@@ -28,7 +27,6 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 		.withSockJS();
 	}
 
-	@Override
 	public void configureMessageBroker(MessageBrokerRegistry registry) {
 		//colocamos lo que queramos, es el nombre de evento, cuando el servidor emite un mensaje o notifica a
 		//todos los clientes, tenemos que indicar el nombre del evento para que los clientes esten subscritos a
